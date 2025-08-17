@@ -1,0 +1,27 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block title %}
+    {{ pagename }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>{{ pagename }}</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        <ol>
+            {% for item in countries_items %}
+            <li>
+                <a href="{% url 'country_detail' forloop.counter %}">{{ item.country }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

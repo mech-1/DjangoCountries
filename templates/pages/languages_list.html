@@ -11,5 +11,15 @@
             <hr>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+        <ol>
+            {% for language in languages_items %}
+            <li>{{ language }}</li>
+            {% endfor %}
+        </ol>
+
+        </div>
+    </div>
 </div>
 {% endblock %}
