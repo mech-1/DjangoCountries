@@ -16,7 +16,7 @@
         <ol>
             {% for item in countries_items %}
             <li>
-                <a href="{% url 'country_detail' forloop.counter %}">{{ item.country }}</a>
+                <a href="{% url 'country_detail' item.id %}">{{ item.name }}</a>
             </li>
             {% endfor %}
         </ol>

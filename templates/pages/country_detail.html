@@ -13,11 +13,11 @@
     </div>
     <div class="row">
         <div class="col">
-        <h2>{{ countries_item.country }}</h2>
+        <h2>{{ countries_item.name }}</h2>
         <ul>
-            {% for language in countries_item.languages %}
+            {% for language in countries_item.languages.all %}
             <li>
-                {{ language }}
+                {{ language.name }}
             </li>
             {% endfor %}
         </ul>
