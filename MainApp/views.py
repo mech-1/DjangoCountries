@@ -53,3 +53,15 @@ def languages_list(request):
     }
 
     return render(request, 'pages/languages_list.html', context)
+
+
+def language_detail(request, id):
+    languages_item = get_object_or_404(Language, pk=id)
+    countries_items = languages_item.country_set.all()
+    context = {
+        'pagename': 'Django Countries',
+        'languages_item': languages_item,
+        'countries_items': countries_items,
+    }
+
+    return render(request, 'pages/language_detail.html', context)
