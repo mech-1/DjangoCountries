@@ -23,7 +23,8 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('countries-list/', views.countries_list, name='countries_list'),
-    path('country/<int:id>/detail', views.country_detail, name='country_detail'),
+    path('countries-that-start-with-<str:letter>', views.countries_start_with_letter, name='countries_start_with_letter'),
+    path('country/<int:id>/detail/', views.country_detail, name='country_detail'),
     path('languages/', views.languages_list, name='languages'),
-    path('language/<int:id>/detail', views.language_detail, name='language_detail'),
+    path('language/<int:id>/detail/', views.language_detail, name='language_detail'),
 ]

@@ -10,7 +10,7 @@
             <h1>{{ pagename }}</h1>
             <div class="flex-container">
             {% for letter in alphabet %}
-                <a href="{% url 'countries_start_with_letter' letter %}">{{ letter }}</a>
+                <a class="{% if letter == current_letter %}active{% endif %}" href="{% url 'countries_start_with_letter' letter %}">{{ letter }}</a>
             {% endfor %}
             </div>
             <hr>

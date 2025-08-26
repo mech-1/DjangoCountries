@@ -1,4 +1,6 @@
 # from django.http.response import Http404
+import string
+
 from django.shortcuts import render, get_object_or_404
 
 from MainApp.models import Country, Language
@@ -15,13 +17,27 @@ def home(request):
 def countries_list(request):
     # countries_items = json_from_file()
     countries_items = Country.objects.all()
-    context = {'pagename': 'Django Countries',
-               'countries_items': countries_items,
-               }
+    alphabet = list(string.ascii_uppercase)
+    context = {
+        'pagename': 'Alphabetical list of countries',
+        'countries_items': countries_items,
+        'alphabet': alphabet,
+    }
 
     return render(request, 'pages/countries_list.html', context)
 
 
+def countries_start_with_letter(request, letter):
+    countries_items = Country.objects.filter(name__startswith=letter)
+    alphabet = list(string.ascii_uppercase)
+    context = {
+        'pagename': f'Countries that start with "{letter}"',
+        'countries_items': countries_items,
+        'alphabet': alphabet,
+        'current_letter': letter,
+    }
+
+    return render(request, 'pages/countries_start_with_letter.html', context)
 def country_detail(request, id):
     countries_item = get_object_or_404(Country, pk=id)
     context = {
