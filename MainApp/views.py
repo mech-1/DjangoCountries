@@ -1,6 +1,7 @@
 # from django.http.response import Http404
 import string
 
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 
 from MainApp.models import Country, Language
@@ -18,9 +19,12 @@ def countries_list(request):
     # countries_items = json_from_file()
     countries_items = Country.objects.all()
     alphabet = list(string.ascii_uppercase)
+    paginator = Paginator(countries_items, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
         'pagename': 'Alphabetical list of countries',
-        'countries_items': countries_items,
+        'page_obj': page_obj,
         'alphabet': alphabet,
     }
 
